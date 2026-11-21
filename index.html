@@ -153,9 +153,9 @@ button:focus-visible,a:focus-visible{outline:3px solid #88aa98;outline-offset:3p
  .main-tabs button{min-height:66px}
  .lesson-title{overflow-wrap:normal;hyphens:auto}
 }
-</style><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#103c35"></head><body><div class="compact-header" id="compactHeader" aria-hidden="true"><div class="compact-header-inner"><span class="compact-header-mark" aria-hidden="true">♫</span><span class="compact-header-name">Bendir Kursu</span></div></div><header class="hero-header"><a class="hero-home-link" href="https://buyum.github.io/bendir-kursu/" target="_self" aria-label="Bendir Kursu ana sayfasına dön"><div class="hero-content"><span class="hero-kicker">TASAVVUF MÛSİKÎSİ · BENDİR EĞİTİMİ</span><h1>Bendir Kursu</h1><p>Usûlleri öğren, ritmi hisset.</p></div></a></header><main><nav class="main-tabs" aria-label="Ana menü"><button type="button" data-view="dersler" class="selected"><span class="nav-icon" aria-hidden="true">▤</span><span>Dersler</span></button><button type="button" data-view="notalar"><span class="nav-icon" aria-hidden="true">♫</span><span>Usûl Notaları</span></button><button type="button" data-view="videolar"><span class="nav-icon" aria-hidden="true">▷</span><span>Alıştırma Videoları</span></button><button type="button" data-view="temel"><span class="nav-icon" aria-hidden="true">✧</span><span>Temel Bilgiler</span></button></nav><div id="lessonControls" class="lesson-picker"><label for="lessonSelect">Ders Seçimi</label><select id="lessonSelect" aria-label="Ders seçimi"></select></div><section id="home" hidden></section><section id="detail" class="card" hidden></section><section id="library" hidden></section></main><footer class="site-footer"><div class="footer-brand">Bendir Kursu</div><div class="build-meta" id="buildMeta" aria-label="Sürüm ve son güncelleme">Sürüm 1.31 · Son güncelleme tarihi yayınlandıktan sonra görüntülenir.</div><button type="button" id="refreshPage" class="refresh-link" aria-label="Sayfayı yeniden yükle">↻ Sayfayı yenile</button></footer><div class="notation-lightbox" id="notationLightbox" role="dialog" aria-modal="true" aria-label="Nota görseli" hidden><div class="notation-lightbox-toolbar"><span class="notation-lightbox-title" id="notationLightboxTitle"></span><button type="button" class="notation-lightbox-close" id="notationLightboxClose" aria-label="Kapat">×</button></div><div class="notation-lightbox-stage" id="notationLightboxStage"><img class="notation-lightbox-image" id="notationLightboxImage" alt=""></div><div class="notation-lightbox-hint">İki parmakla yakınlaştırın · Görseli sürükleyin · Kapatmak için ×</div></div><script>
+</style></head><body><div class="compact-header" id="compactHeader" aria-hidden="true"><div class="compact-header-inner"><span class="compact-header-mark" aria-hidden="true">♫</span><span class="compact-header-name">Bendir Kursu</span></div></div><header class="hero-header"><a class="hero-home-link" href="https://buyum.github.io/bendir-kursu/" target="_self" aria-label="Bendir Kursu ana sayfasına dön"><div class="hero-content"><span class="hero-kicker">TASAVVUF MÛSİKÎSİ · BENDİR EĞİTİMİ</span><h1>Bendir Kursu</h1><p>Usûlleri öğren, ritmi hisset.</p></div></a></header><main><nav class="main-tabs" aria-label="Ana menü"><button type="button" data-view="dersler" class="selected"><span class="nav-icon" aria-hidden="true">▤</span><span>Dersler</span></button><button type="button" data-view="notalar"><span class="nav-icon" aria-hidden="true">♫</span><span>Usûl Notaları</span></button><button type="button" data-view="videolar"><span class="nav-icon" aria-hidden="true">▷</span><span>Alıştırma Videoları</span></button><button type="button" data-view="temel"><span class="nav-icon" aria-hidden="true">✧</span><span>Temel Bilgiler</span></button></nav><div id="lessonControls" class="lesson-picker"><label for="lessonSelect">Ders Seçimi</label><select id="lessonSelect" aria-label="Ders seçimi"></select></div><section id="home" hidden></section><section id="detail" class="card" hidden></section><section id="library" hidden></section></main><footer class="site-footer"><div class="footer-brand">Bendir Kursu</div><div class="build-meta" id="buildMeta" aria-label="Sürüm ve son güncelleme">Sürüm 1.32 · Son güncelleme tarihi yayınlandıktan sonra görüntülenir.</div><button type="button" id="refreshPage" class="refresh-link" aria-label="Sayfayı yeniden yükle">↻ Sayfayı yenile</button></footer><div class="notation-lightbox" id="notationLightbox" role="dialog" aria-modal="true" aria-label="Nota görseli" hidden><div class="notation-lightbox-toolbar"><span class="notation-lightbox-title" id="notationLightboxTitle"></span><button type="button" class="notation-lightbox-close" id="notationLightboxClose" aria-label="Kapat">×</button></div><div class="notation-lightbox-stage" id="notationLightboxStage"><img class="notation-lightbox-image" id="notationLightboxImage" alt=""></div><div class="notation-lightbox-hint">İki parmakla yakınlaştırın · Görseli sürükleyin · Kapatmak için ×</div></div><script>
 // Visible course version is maintained manually; GitHub supplies the commit date.
-const COURSE_VERSION = "1.31";
+const COURSE_VERSION = "1.32";
 // GitHub commit information is loaded only on the published site.
 // A local file preview deliberately displays "Önizleme" instead of an invented commit.
 async function loadBuildMeta(){
@@ -272,27 +272,7 @@ async function copyCurrentLink(){
 function showHome(){
  const home=$('#home');
  home.innerHTML=`<div class="home-intro"><p class="home-kicker">BENDİR ÖĞRENMEYE BAŞLAYIN</p><h2>Bendire ilk adım</h2><p>Bendir çalmaya yeni başlıyorsanız önce temel vuruşları öğrenin. Ardından ilk usûl dersine geçin.</p><div class="home-step"><h3>Temel Bilgiler</h3><p>Bendir seslerini ve vuruş yerlerini tanıyın.</p></div><div class="home-step"><h3>1. Ders: ${formatTitle(ordered[0].title)}</h3><p>İlk usûlünüzü öğrenin ve alıştırmalarla pekiştirin.</p></div><button type="button" class="home-start" id="homeStart">Öğrenmeye başla →</button></div>`;
- home.insertAdjacentHTML('beforeend',`<section class="install-panel" id="installPanel"><h2>Ana Ekrana Ekle</h2><p>Bendir Kursu’na telefonunuzun ana ekranından kolayca ulaşın.</p><button type="button" id="installButton">Ana Ekrana Ekle</button><div class="install-help" id="installHelp" hidden role="status"></div></section>`);
  home.querySelector('#homeStart').addEventListener('click',()=>setView('temel'));
- setupInstallPanel();
-}
-let deferredInstallPrompt=null;
-window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();deferredInstallPrompt=event;});
-window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;document.getElementById('installPanel')?.setAttribute('hidden','');});
-function setupInstallPanel(){
- const panel=document.getElementById('installPanel');
- if(!panel)return;
- if(window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true){panel.hidden=true;return;}
- const button=panel.querySelector('#installButton'),help=panel.querySelector('#installHelp');
- button.addEventListener('click',async()=>{
-  if(deferredInstallPrompt){
-   const prompt=deferredInstallPrompt;deferredInstallPrompt=null;
-   try{await prompt.prompt();const choice=await prompt.userChoice;if(choice?.outcome==='accepted'){panel.hidden=true;return;}}catch(e){}
-  }
-  const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1;
-  help.textContent=ios?'Safari’de Paylaş simgesine dokunun, ardından “Ana Ekrana Ekle” seçeneğini seçin. Safari kullanmıyorsanız sayfayı Safari’de açın.':'Tarayıcınızın menüsünü açın ve “Ana ekrana ekle” veya “Uygulamayı yükle” seçeneğini seçin. Bu seçenek tarayıcınıza göre değişebilir.';
-  help.hidden=false;
- });
 }
 function goToFirstLesson(){current=ordered[0].id;setView('dersler');}
 function setView(view,scrollToPicker=false){
