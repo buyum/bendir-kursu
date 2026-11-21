@@ -4,9 +4,9 @@
 const DEBUG_MODE = true; // Bei Bedarf auf false ändern.
 if (DEBUG_MODE) document.documentElement.classList.add('debug-mode');
 </script>
-<style>:root{font-family:system-ui,sans-serif;color:#222;background:#faf8f4}*{box-sizing:border-box}body{margin:0}header{background:#293b37;color:white;padding:20px}main{max-width:760px;margin:auto;padding:18px}h1{font-size:1.6rem;margin:0}h2{font-size:1.25rem}button,input,select{font:inherit}button{padding:12px;border:1px solid #9aa9a3;border-radius:12px;background:white;cursor:pointer;min-height:44px}button:disabled{opacity:.35}input,select{width:100%;padding:13px;border:1px solid #aaa;border-radius:10px;margin:8px 0}.card{background:white;border:1px solid #e0ddd7;border-radius:16px;padding:16px;margin:12px 0}nav{display:flex;gap:8px;flex-wrap:wrap}.active{background:#293b37;color:white}.meta{color:#606b65;font-size:.9rem}.player{width:100%;aspect-ratio:9/16;max-height:560px;border:0;border-radius:12px;background:#eee}.wide{aspect-ratio:16/9}.actions{display:flex;justify-content:space-between;gap:8px}.notes{white-space:pre-wrap;line-height:1.6}a{color:#1b5b65;overflow-wrap:anywhere}@media(min-width:600px){header{padding:25px max(25px,calc((100vw - 760px)/2))}} .notation{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #e0ddd7}.video-section{padding:16px 0;border-top:1px solid #e0ddd7}.video-section h3{font-size:1.08rem;line-height:1.4;margin:0 0 12px}.video-wrap{max-width:330px;margin:0 auto}.video-wrap .player{display:block;max-height:none;aspect-ratio:9/16}.video-section .meta{margin-bottom:0}.fraction{font-size:.88em;font-weight:750;white-space:nowrap;letter-spacing:-.06em}.lesson-title{font-size:clamp(1.65rem,6vw,2.4rem);line-height:1.25;letter-spacing:-.025em;margin:8px 0 0}.lesson-title .fraction{font-size:1.12em}.lesson-prefix{font-size:.72em;color:#4d6158;font-weight:700;letter-spacing:0}.lesson-hero{background:transparent;border:0;border-bottom:2px solid #e3e5e2;border-radius:0;padding:10px 0 20px;margin:8px 0 24px}.lesson-hero .lesson-title{margin:0}.lesson-hero .lesson-prefix{color:inherit}.content-panel{padding:16px;border-radius:14px;margin:18px 0;border:1px solid #e2e5df}.notation-panel{background:#f8faf8;border-left:3px solid #b9cbbf}.videos-panel{background:#f8faff;border-left:3px solid #bdcce1}.notes-panel{background:#fffdf7;border-left:3px solid #e5d7a7}.content-panel h3{margin:0 0 14px;font-size:1.16rem}.video-section{background:#fff;border:1px solid #dbe4f0;border-radius:12px;padding:14px;margin:12px 0}.video-section:first-of-type{border-top:1px solid #dbe4f0}.video-section h4{font-size:1.05rem;line-height:1.45;margin:0 0 12px}.notes-panel .notes-placeholder{margin:0}.card button[data-id] .fraction{font-size:.88em}.notes-placeholder{background:#fff9e5;color:#655721;border:1px solid #eee3bd;border-radius:12px;padding:14px}.video-section h3{font-size:1.12rem}.card button[data-id]{text-align:left;line-height:1.5}.card button[data-id] .fraction{font-size:1.12em}.notation-panel + .notation-panel{margin-top:10px}.basics-card{border-left:3px solid #b9cbbf}.basics-card button{text-align:left;width:100%}.basics-image{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #e0ddd7}.lesson-hero{clear:both}.site-footer{display:none;max-width:760px;margin:34px auto 0;padding:18px 18px 28px;border-top:1px solid #e5e5df;text-align:center;color:#7b817c;font-size:.78rem;line-height:1.6}.debug-mode .site-footer{display:block}.site-footer .build-meta{font-variant-numeric:tabular-nums}.site-footer .refresh-link{display:inline-flex;align-items:center;justify-content:center;margin-top:5px;padding:5px 9px;min-height:32px;border:0;background:transparent;color:#6b7770;font:inherit;text-decoration:underline;text-decoration-color:#c9d1cb;text-underline-offset:3px;cursor:pointer}.site-footer .refresh-link:hover,.site-footer .refresh-link:focus-visible{color:#293b37;text-decoration-color:currentColor} </style></head><body><header><h1>🥁 Bendir Kursu</h1><p>Videolar, ders notları ve alıştırmalar</p></header><main><nav><button id="byTopic" class="active">Konulara göre</button><button id="byDate">Ders tarihine göre</button></nav><input id="search" placeholder="🔎 Derslerde ara …" aria-label="Derslerde ara"><div id="listing"></div><section id="detail" class="card" hidden></section></main><footer class="site-footer"><div class="build-meta" id="buildMeta" aria-label="Sürüm ve son güncelleme">Sürüm 1.8 · Son güncelleme tarihi yayınlandıktan sonra görüntülenir.</div><button type="button" id="refreshPage" class="refresh-link" aria-label="Sayfayı yeniden yükle">↻ Sayfayı yenile</button></footer><script>
+<style>:root{font-family:system-ui,sans-serif;color:#222;background:#faf8f4}*{box-sizing:border-box}body{margin:0}header{background:#293b37;color:white;padding:20px}main{max-width:760px;margin:auto;padding:18px}h1{font-size:1.6rem;margin:0}h2{font-size:1.25rem}button,input,select{font:inherit}button{padding:12px;border:1px solid #9aa9a3;border-radius:12px;background:white;cursor:pointer;min-height:44px}button:disabled{opacity:.35}input,select{width:100%;padding:13px;border:1px solid #aaa;border-radius:10px;margin:8px 0}.card{background:white;border:1px solid #e0ddd7;border-radius:16px;padding:16px;margin:12px 0}nav{display:flex;gap:8px;flex-wrap:wrap}.active{background:#293b37;color:white}.meta{color:#606b65;font-size:.9rem}.player{width:100%;aspect-ratio:9/16;max-height:560px;border:0;border-radius:12px;background:#eee}.wide{aspect-ratio:16/9}.actions{display:flex;justify-content:space-between;gap:8px}.notes{white-space:pre-wrap;line-height:1.6}a{color:#1b5b65;overflow-wrap:anywhere}@media(min-width:600px){header{padding:25px max(25px,calc((100vw - 760px)/2))}} .notation{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #e0ddd7}.video-section{padding:16px 0;border-top:1px solid #e0ddd7}.video-section h3{font-size:1.08rem;line-height:1.4;margin:0 0 12px}.video-wrap{max-width:330px;margin:0 auto}.video-wrap .player{display:block;max-height:none;aspect-ratio:9/16}.video-section .meta{margin-bottom:0}.fraction{font-size:.88em;font-weight:750;white-space:nowrap;letter-spacing:-.06em}.lesson-title{font-size:clamp(1.65rem,6vw,2.4rem);line-height:1.25;letter-spacing:-.025em;margin:8px 0 0}.lesson-title .fraction{font-size:1.12em}.lesson-prefix{font-size:.72em;color:#4d6158;font-weight:700;letter-spacing:0}.lesson-hero{background:transparent;border:0;border-bottom:2px solid #e3e5e2;border-radius:0;padding:10px 0 20px;margin:8px 0 24px}.lesson-hero .lesson-title{margin:0}.lesson-hero .lesson-prefix{color:inherit}.content-panel{padding:16px;border-radius:14px;margin:18px 0;border:1px solid #e2e5df}.notation-panel{background:#f8faf8;border-left:3px solid #b9cbbf}.videos-panel{background:#f8faff;border-left:3px solid #bdcce1}.notes-panel{background:#fffdf7;border-left:3px solid #e5d7a7}.content-panel h3{margin:0 0 14px;font-size:1.16rem}.video-section{background:#fff;border:1px solid #dbe4f0;border-radius:12px;padding:14px;margin:12px 0}.video-section:first-of-type{border-top:1px solid #dbe4f0}.video-section h4{font-size:1.05rem;line-height:1.45;margin:0 0 12px}.notes-panel .notes-placeholder{margin:0}.card button[data-id] .fraction{font-size:.88em}.notes-placeholder{background:#fff9e5;color:#655721;border:1px solid #eee3bd;border-radius:12px;padding:14px}.video-section h3{font-size:1.12rem}.card button[data-id]{text-align:left;line-height:1.5}.card button[data-id] .fraction{font-size:1.12em}.notation-panel + .notation-panel{margin-top:10px}.basics-card{border-left:3px solid #b9cbbf}.basics-card button{text-align:left;width:100%}.basics-image{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #e0ddd7}.lesson-hero{clear:both}.site-footer{display:none;max-width:760px;margin:34px auto 0;padding:18px 18px 28px;border-top:1px solid #e5e5df;text-align:center;color:#7b817c;font-size:.78rem;line-height:1.6}.debug-mode .site-footer{display:block}.site-footer .build-meta{font-variant-numeric:tabular-nums}.site-footer .refresh-link{display:inline-flex;align-items:center;justify-content:center;margin-top:5px;padding:5px 9px;min-height:32px;border:0;background:transparent;color:#6b7770;font:inherit;text-decoration:underline;text-decoration-color:#c9d1cb;text-underline-offset:3px;cursor:pointer}.site-footer .refresh-link:hover,.site-footer .refresh-link:focus-visible{color:#293b37;text-decoration-color:currentColor} .lesson-picker{margin:10px 0 18px}.lesson-picker label{display:block;font-weight:650;font-size:.9rem;color:#40574c;margin-bottom:5px}.lesson-picker select{background:#fff;border-color:#b9c8be;min-height:48px;margin:0}.card#detail{margin-top:0}.actions button{flex:1;min-width:0;overflow-wrap:anywhere;line-height:1.4;text-align:center}.actions button:disabled{opacity:.35}.basics-image{width:100%;height:auto;display:block;border-radius:12px}.lesson-picker select:focus-visible{outline:3px solid #88aa98;outline-offset:2px}.main-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:6px 0 18px}.main-tabs button{font-size:.91rem;line-height:1.3;padding:10px 7px;background:#fff;min-width:0}.main-tabs button.selected{background:#293b37;color:#fff;border-color:#293b37}.library-title{font-size:1.55rem;margin:10px 0 8px}.library-intro{color:#606b65;line-height:1.5;margin:0 0 20px}.library-card{background:#fff;border:1px solid #e0ddd7;border-radius:16px;padding:16px;margin:14px 0}.library-card h3{margin:0 0 14px;font-size:1.18rem}.library-card .notation-panel{margin:12px 0}.library-card .video-section{margin:12px 0}.library-card .video-section h4{font-size:1rem}.library-card .notation{max-width:100%}@media(min-width:620px){.main-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}}.share-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 14px}.share-tools button{font-size:.9rem;padding:9px 14px;min-height:40px}.share-feedback{font-size:.83rem;color:#40574c}.share-tools button:focus-visible{outline:3px solid #88aa98;outline-offset:2px}.title-share-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.title-share-row>h2{flex:1;min-width:0}.share-icon{flex:0 0 44px;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;padding:9px;border:1px solid #b9c8be;border-radius:12px;background:#fff;color:#293b37}.share-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.share-icon:focus-visible{outline:3px solid #88aa98;outline-offset:2px}.share-feedback{font-size:.83rem;color:#40574c}.share-feedback:empty{display:none}.title-share-container{margin-bottom:12px}.title-share-container .share-feedback{display:block;margin-top:5px;text-align:right;overflow-wrap:anywhere}@media(max-width:420px){.title-share-row{gap:7px}.share-icon{flex-basis:42px;width:42px;height:42px}}</style></head><body><header><h1>🥁 Bendir Kursu</h1><p>Videolar, ders notları ve alıştırmalar</p></header><main><nav class="main-tabs" aria-label="Ana menü"><button type="button" data-view="dersler" class="selected">Dersler</button><button type="button" data-view="notalar">Usûl Notaları</button><button type="button" data-view="videolar">Alıştırma Videoları</button><button type="button" data-view="temel">Temel Bilgiler</button></nav><div id="lessonControls" class="lesson-picker"><label for="lessonSelect">Ders Seçimi</label><select id="lessonSelect" aria-label="Ders seçimi"></select></div><section id="detail" class="card" hidden></section><section id="library" hidden></section></main><footer class="site-footer"><div class="build-meta" id="buildMeta" aria-label="Sürüm ve son güncelleme">Sürüm 1.14 · Son güncelleme tarihi yayınlandıktan sonra görüntülenir.</div><button type="button" id="refreshPage" class="refresh-link" aria-label="Sayfayı yeniden yükle">↻ Sayfayı yenile</button></footer><script>
 // Visible course version is maintained manually; GitHub supplies the commit date.
-const COURSE_VERSION = "1.8";
+const COURSE_VERSION = "1.14";
 // GitHub commit information is loaded only on the published site.
 // A local file preview deliberately displays "Önizleme" instead of an invented commit.
 async function loadBuildMeta(){
@@ -44,24 +44,126 @@ const lessons=[
  {id:'l3',order:3,topic:'Sofya’n Usûlü',date:null,title:'4/4 Sofya’n Usûlü',videos:[{title:'Ana Kalıp ve Velvelesi - Saf Pratik',url:'https://www.youtube.com/shorts/XjtrsKE0Lc8'},{title:'Ana Kalip - Velvele Musiki Pratik',url:'https://www.youtube.com/shorts/9-bhRI9K0vY'}],images:[{title:'Nota Görseli – Ana Usûl',src:'images/4te4_sofyan-usulu-ana-unul-nota.jpeg',alt:'Sofya’n Usûlü – Ana Usûl'},{title:'Nota Görseli – Velvele',src:'images/4te4_sofyan-usulu-nota-velvele.jpeg',alt:'Sofya’n Usûlü – Velvele'}],notes:'Ders notları henüz eklenmedi.'},
  {id:'l4',order:4,topic:'Yürük Semâî Usûlü',date:null,title:'6/8 Yürük Semâî Usûlü',videos:[{title:'Ana Kalıp ve Velvelesi - Saf Pratik',url:'https://www.youtube.com/shorts/ayCr-NDxYBI'},{title:'Ana Kalip - Musiki Pratik',url:'https://www.youtube.com/shorts/0qMgYIk7arg'},{title:'Velvele - Musiki Pratiky',url:'https://www.youtube.com/shorts/1jee4ruspzM'}],images:[{title:'Nota Görseli – Ana Usûl ve Velvele',src:'images/6te8_yuruk-semai-usulu-nota.jpeg',alt:'Yürük Semâî Usûlü – Ana Usûl ve Velvele'}],notes:'[Ders notları henüz eklenmedi.]'}
 ];
-let mode='topic',current=null;const $=s=>document.querySelector(s);const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const ordered=[...lessons].sort((a,b)=>a.order-b.order);
+let activeView="temel",suppressRoute=true;
+let current=null;const $=s=>document.querySelector(s);const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const ordered=[...lessons].sort((a,b)=>a.order-b.order);
 function formatTitle(title){const t=String(title||'');return escapeHtml(t).replace(/2\/4/g,'<span class="fraction" aria-label="iki bölü dört">2⁄4</span>').replace(/3\/4/g,'<span class="fraction" aria-label="üç bölü dört">3⁄4</span>').replace(/4\/4/g,'<span class="fraction" aria-label="dört bölü dört">4⁄4</span>').replace(/6\/8/g,'<span class="fraction" aria-label="altı bölü sekiz">6⁄8</span>')}
-function render(){const term=$('#search').value.toLowerCase();const list=ordered.filter(x=>[x.title,x.topic,x.date,x.notes].join(' ').toLowerCase().includes(term));const groups={};for(const l of list){const key=mode==='topic'?l.topic:(l.date||'Tarihi belirtilmeyen dersler');(groups[key]??=[]).push(l)}const basicsMatch='temel bilgiler bendir sesleri ve vuruş yerleri'.includes(term);$('#listing').innerHTML=(basicsMatch?'<section class="card basics-card"><h2>Temel Bilgiler</h2><button type="button" id="openBasics">Bendir Sesleri ve Vuruş Yerleri →</button></section>':'')+Object.entries(groups).map(([group,ls])=>`<section class="card"><h2>${escapeHtml(group)}</h2>${ls.map(l=>`<p><button data-id="${escapeHtml(l.id)}">${l.order}. Ders: ${formatTitle(l.title)} →</button></p>`).join('')}</section>`).join('')||'<p>Ders bulunamadı.</p>';document.getElementById('openBasics')?.addEventListener('click',showBasics);document.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>show(b.dataset.id));$('#byTopic').classList.toggle('active',mode==='topic');$('#byDate').classList.toggle('active',mode==='date')}
+function render(){
+ const picker=$('#lessonSelect');
+ picker.innerHTML='<option value="basics">Temel Bilgiler</option>'+ordered.map(l=>`<option value="${escapeHtml(l.id)}">${l.order}. Ders: ${escapeHtml(l.title.replaceAll('/', '⁄'))}</option>`).join('');
+ picker.onchange=()=>picker.value==='basics'?showBasics():show(picker.value);
+ showBasics(false);
+}
+function syncPicker(){ $('#lessonSelect').value=current; }
 function embed(url){try{const u=new URL(url);if(!['youtube.com','www.youtube.com','m.youtube.com','youtu.be','www.youtube-nocookie.com'].includes(u.hostname))return null;let id=u.hostname==='youtu.be'?u.pathname.slice(1):u.pathname.match(/^\/(?:shorts|embed)\/([\w-]+)/)?.[1]||u.searchParams.get('v');return /^[\w-]{11}$/.test(id||'')?'https://www.youtube-nocookie.com/embed/'+id+'?loop=1&playlist='+id:null}catch{return null}}
-function showBasics(){
+function showBasics(scroll=true){
  current='basics';
+ if(activeView==='dersler')syncRoute();
  $('#detail').hidden=false;
- $('#detail').innerHTML=`<div class="lesson-hero"><h2 class="lesson-title">Temel Bilgiler</h2></div><section class="content-panel notation-panel"><h3>Bendir Sesleri ve Vuruş Yerleri</h3><a href="images/bendir-ses.png" target="_blank" rel="noopener noreferrer" aria-label="Görseli tam boyutta aç"><img src="images/bendir-ses.png" alt="Bendir üzerinde Düm, Dü, Tek, Te, Ke, Kâ ve Me vuruş yerleri" class="basics-image" loading="lazy"></a><p class="meta">Görseli tam boyutta açmak için üzerine dokunun.</p></section><div class="actions"><button id="nextBasics">1. Ders →</button></div>`;
- document.getElementById('nextBasics').onclick=()=>show(ordered[0].id);
+ $('#detail').innerHTML=`<div class="lesson-hero"><h2 class="lesson-title">Temel Bilgiler</h2></div><section class="content-panel notation-panel"><h3>Bendir Sesleri ve Vuruş Yerleri</h3><a href="images/bendir-ses.png" target="_blank" rel="noopener noreferrer" aria-label="Görseli tam boyutta aç"><img src="images/bendir-ses.png" alt="Bendir üzerinde Düm, Dü, Tek, Te, Ke, Kâ ve Me vuruş yerleri" class="basics-image" loading="lazy"></a><p class="meta">Görseli tam boyutta açmak için üzerine dokunun.</p></section><div class="actions"><button id="nextBasics">${ordered[0].order}. Ders: ${formatTitle(ordered[0].title)} →</button></div>`;
+ placeShareIcon();document.getElementById('nextBasics').onclick=()=>show(ordered[0].id);
+ syncPicker();
  $('#detail').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function show(id){
- current=id;const l=ordered.find(x=>x.id===id);if(!l)return;const i=ordered.indexOf(l);
+ current=id;if(activeView==='dersler')syncRoute();const l=ordered.find(x=>x.id===id);if(!l)return;syncPicker();const i=ordered.indexOf(l);
  const images=l.placeholder?`<section class="content-panel notation-panel"><h3>[Nota Görseli – Başlık]</h3><p class="meta">[Nota görseli eklenecek]</p></section>`:(l.images||[]).map(im=>`<section class="content-panel notation-panel"><h3>${escapeHtml(im.title)}</h3><a href="${escapeHtml(im.src)}" target="_blank" rel="noopener noreferrer" aria-label="Nota görselini tam boyutta aç"><img src="${escapeHtml(im.src)}" alt="${escapeHtml(im.alt)}" class="notation" loading="lazy"></a><p class="meta">Nota görselini tam boyutta açmak için üzerine dokunun.</p></section>`).join('');
  const videos=l.placeholder?'<section class="video-section"><h4>1. Alıştırma: [Alıştırma başlığı]</h4><p class="meta">[Video bağlantısı eklenecek]</p></section>':(l.videos||[]).map((v,n)=>{const src=embed(v.url);return `<section class="video-section"><h4>${n+1}. Alıştırma: ${escapeHtml(v.title)}</h4>${src?`<div class="video-wrap"><iframe class="player" src="${src}" title="${escapeHtml(v.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`:`<p>Video burada oynatılamıyor. <a href="${escapeHtml(v.url)}" target="_blank" rel="noopener noreferrer">YouTube’da izle</a></p>`}</section>`}).join('');
  $('#detail').hidden=false;
- $('#detail').innerHTML=`<div class="lesson-hero"><h2 class="lesson-title"><span class="lesson-prefix">${l.order}. Ders:</span> ${formatTitle(l.title)}</h2></div>${images}<section class="content-panel videos-panel"><h3>Alıştırmalar</h3>${videos}</section><section class="content-panel notes-panel"><h3>Ders Notları</h3><p class="notes notes-placeholder">${escapeHtml(l.notes)}</p></section><div class="actions"><button id="prev" ${i===0?'disabled':''}>← Önceki Ders</button><button id="next" ${i===ordered.length-1?'disabled':''}>Sonraki Ders →</button></div>`;
- $('#prev').onclick=()=>show(ordered[i-1]?.id);$('#next').onclick=()=>show(ordered[i+1]?.id);$('#detail').scrollIntoView({behavior:'smooth',block:'start'});
+ $('#detail').innerHTML=`<div class="lesson-hero"><h2 class="lesson-title"><span class="lesson-prefix">${l.order}. Ders:</span> ${formatTitle(l.title)}</h2></div>${images}<section class="content-panel videos-panel"><h3>Alıştırmalar</h3>${videos}</section><section class="content-panel notes-panel"><h3>Ders Notları</h3><p class="notes notes-placeholder">${escapeHtml(l.notes)}</p></section><div class="actions"><button id="prev">← ${i===0?'Temel Bilgiler':`${ordered[i-1].order}. Ders: ${formatTitle(ordered[i-1].title)}`}</button>${i<ordered.length-1?`<button id="next">${ordered[i+1].order}. Ders: ${formatTitle(ordered[i+1].title)} →</button>`:''}</div>`;
+ placeShareIcon();$('#prev').onclick=()=>i===0?showBasics():show(ordered[i-1].id);if(i<ordered.length-1)$('#next').onclick=()=>show(ordered[i+1].id);$('#detail').scrollIntoView({behavior:'smooth',block:'start'});
 }
-$('#byTopic').onclick=()=>{mode='topic';render()};$('#byDate').onclick=()=>{mode='date';render()};$('#search').oninput=render;render();
+function notationMarkup(im){return `<section class="content-panel notation-panel"><h3>${escapeHtml(im.title)}</h3><a href="${escapeHtml(im.src)}" target="_blank" rel="noopener noreferrer" aria-label="Nota görselini tam boyutta aç"><img src="${escapeHtml(im.src)}" alt="${escapeHtml(im.alt)}" class="notation" loading="lazy"></a><p class="meta">Nota görselini tam boyutta açmak için üzerine dokunun.</p></section>`}
+function videoMarkup(v,n){const src=embed(v.url);return `<section class="video-section"><h4>${n+1}. Alıştırma: ${escapeHtml(v.title)}</h4>${src?`<div class="video-wrap"><iframe class="player" src="${src}" title="${escapeHtml(v.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`:`<p><a href="${escapeHtml(v.url)}" target="_blank" rel="noopener noreferrer">YouTube’da izle</a></p>`}</section>`}
+function placeShareIcon(){
+ const root=activeView==='dersler'?$('#detail'):$('#library');
+ const heading=root.querySelector(activeView==='dersler'?'.lesson-hero .lesson-title':'.library-title');
+ if(!heading)return;
+ const wrapper=document.createElement('div');
+ wrapper.className='title-share-container';
+ const row=document.createElement('div');
+ row.className='title-share-row';
+ heading.parentNode.insertBefore(wrapper,heading);
+ wrapper.appendChild(row);
+ row.appendChild(heading);
+ const btn=document.createElement('button');
+ btn.type='button';btn.className='share-icon';btn.id='shareLink';
+ btn.setAttribute('aria-label','Paylaş veya bağlantıyı kopyala');
+ btn.title='Paylaş';
+ btn.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V3m0 0L7.5 7.5M12 3l4.5 4.5"></path><path d="M5 13v5a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-5"></path></svg>';
+ row.appendChild(btn);
+ const status=document.createElement('span');
+ status.id='shareFeedback';status.className='share-feedback';
+ status.setAttribute('role','status');status.setAttribute('aria-live','polite');
+ wrapper.appendChild(status);
+ btn.addEventListener('click',shareCurrentLink);
+}
+async function shareCurrentLink(){
+ const link=shareUrl();
+ if(typeof navigator.share==='function'){
+  try{
+   const heading=(activeView==='dersler'?$('#detail'):$('#library')).querySelector('.lesson-title,.library-title');
+   await navigator.share({title:heading?.textContent?.trim()||'Bendir Kursu',url:link});
+   return;
+  }catch(error){
+   if(error?.name==='AbortError')return;
+  }
+ }
+ await copyCurrentLink();
+}
+async function copyCurrentLink(){
+ const link=shareUrl();
+ try{
+  if(navigator.clipboard?.writeText)await navigator.clipboard.writeText(link);
+  else {const field=document.createElement('textarea');field.value=link;field.style.position='fixed';field.style.opacity='0';document.body.appendChild(field);field.select();const ok=document.execCommand('copy');field.remove();if(!ok)throw new Error('copy failed');}
+  $('#shareFeedback').textContent='Bağlantı kopyalandı.';
+ }catch{$('#shareFeedback').textContent='Bağlantı kopyalanamadı: '+link;}
+}
+function setView(view){
+ activeView=view;
+ document.querySelectorAll('[data-view]').forEach(b=>{const selected=b.dataset.view===view;b.classList.toggle('selected',selected);b.setAttribute('aria-current',selected?'page':'false')});
+ const isLessons=view==='dersler';$('#lessonControls').hidden=!isLessons;$('#detail').hidden=!isLessons;$('#library').hidden=isLessons;
+ if(isLessons){if(current==='basics')showBasics();else show(current||ordered[0].id);return}
+ if(view==='temel'){$('#library').innerHTML=`<div class="library-card"><h2 class="library-title">Temel Bilgiler</h2><h3>Bendir Sesleri ve Vuruş Yerleri</h3><a href="images/bendir-ses.png" target="_blank" rel="noopener noreferrer"><img src="images/bendir-ses.png" class="basics-image" alt="Bendir üzerinde temel vuruş yerleri" loading="lazy"></a><p class="meta">Görseli tam boyutta açmak için üzerine dokunun.</p></div>`}
+ else if(view==='notalar'){$('#library').innerHTML=`<h2 class="library-title">Usûl Notaları</h2><p class="library-intro">Usûllerin nota görselleri</p>`+ordered.map(l=>`<article class="library-card"><h3>${l.order}. Ders: ${formatTitle(l.title)}</h3>${(l.images||[]).map(notationMarkup).join('')||'<p>[Nota görseli eklenecek]</p>'}</article>`).join('')}
+ else if(view==='videolar'){$('#library').innerHTML=`<h2 class="library-title">Alıştırma Videoları</h2><p class="library-intro">Usûllere göre alıştırmalar</p>`+ordered.map(l=>`<article class="library-card"><h3>${l.order}. Ders: ${formatTitle(l.title)}</h3>${(l.videos||[]).map(videoMarkup).join('')||'<p>[Video bağlantısı eklenecek]</p>'}</article>`).join('')}
+ if(!isLessons){placeShareIcon();syncRoute();}
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+// URL-Parameter für direkte Links; keine serverseitigen Routen nötig.
+const PUBLIC_SITE='https://ozlem-ozkazan.github.io/bendir-kursu/';
+function routeParams(){
+ if(activeView==='dersler')return current==='basics'?{seite:'grundlagen'}:{ders:String(ordered.find(l=>l.id===current)?.order||1)};
+ return {seite:({temel:'grundlagen',notalar:'notalar',videolar:'videolar'})[activeView]||'grundlagen'};
+}
+function shareUrl(){
+ const url=new URL(location.protocol==='file:'?PUBLIC_SITE:location.href);
+ url.search='';url.hash='';
+ Object.entries(routeParams()).forEach(([k,v])=>url.searchParams.set(k,v));
+ return url.toString();
+}
+function syncRoute(){
+ if(suppressRoute)return;
+ const url=new URL(location.href),params=routeParams();
+ url.searchParams.delete('ders');url.searchParams.delete('seite');
+ Object.entries(params).forEach(([k,v])=>url.searchParams.set(k,v));
+ if(url.href!==location.href)history.pushState(null,'',url);
+ const feedback=$('#shareFeedback');if(feedback)feedback.textContent='';
+}
+function restoreRoute(){
+ const p=new URLSearchParams(location.search),lesson=p.get('ders'),page=p.get('seite');
+ suppressRoute=true;
+ if(lesson && ordered.some(l=>String(l.order)===lesson)){
+  const l=ordered.find(l=>String(l.order)===lesson);
+  current=l.id;setView('dersler');
+ }else if(page==='notalar')setView('notalar');
+ else if(page==='videolar')setView('videolar');
+ else if(page==='grundlagen')setView('temel');
+ else setView('temel');
+ suppressRoute=false;
+}
+render();
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
+window.addEventListener('popstate',restoreRoute);
+
+restoreRoute();
 </script></body></html>
