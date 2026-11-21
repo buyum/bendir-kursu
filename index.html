@@ -108,9 +108,22 @@ main{padding-top:0}
 .hero-home-link{display:block;color:inherit;text-decoration:none;cursor:pointer}
 .hero-home-link::after{content:"";position:absolute;inset:0;z-index:2}
 .hero-home-link:focus-visible{outline:3px solid #e8d5ac;outline-offset:-5px;border-radius:5px}
-</style></head><body><div class="compact-header" id="compactHeader" aria-hidden="true"><div class="compact-header-inner"><span class="compact-header-mark" aria-hidden="true">♫</span><span class="compact-header-name">Bendir Kursu</span></div></div><header class="hero-header"><a class="hero-home-link" href="https://buyum.github.io/bendir-kursu/" target="_self" aria-label="Bendir Kursu ana sayfasına dön"><div class="hero-content"><span class="hero-kicker">TASAVVUF MÛSİKÎSİ · BENDİR EĞİTİMİ</span><h1>Bendir Kursu</h1><p>Usûlleri öğren, ritmi hisset.</p></div></a></header><main><nav class="main-tabs" aria-label="Ana menü"><button type="button" data-view="dersler" class="selected"><span class="nav-icon" aria-hidden="true">▤</span><span>Dersler</span></button><button type="button" data-view="notalar"><span class="nav-icon" aria-hidden="true">♫</span><span>Usûl Notaları</span></button><button type="button" data-view="videolar"><span class="nav-icon" aria-hidden="true">▷</span><span>Alıştırma Videoları</span></button><button type="button" data-view="temel"><span class="nav-icon" aria-hidden="true">✧</span><span>Temel Bilgiler</span></button></nav><div id="lessonControls" class="lesson-picker"><label for="lessonSelect">Ders Seçimi</label><select id="lessonSelect" aria-label="Ders seçimi"></select></div><section id="detail" class="card" hidden></section><section id="library" hidden></section></main><footer class="site-footer"><div class="footer-brand">Bendir Kursu</div><div class="build-meta" id="buildMeta" aria-label="Sürüm ve son güncelleme">Sürüm 1.25 · Son güncelleme tarihi yayınlandıktan sonra görüntülenir.</div><button type="button" id="refreshPage" class="refresh-link" aria-label="Sayfayı yeniden yükle">↻ Sayfayı yenile</button></footer><script>
+
+/* 1.26: Accessible notation viewer with touch pinch, pan and wheel zoom. */
+.notation-panel a:has(.notation){cursor:zoom-in}
+.notation-lightbox[hidden]{display:none!important}
+.notation-lightbox{position:fixed;inset:0;z-index:3000;background:rgba(4,26,24,.94);display:flex;flex-direction:column;color:#fff}
+.notation-lightbox-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:#103c35;flex:none}
+.notation-lightbox-title{font-size:.9rem;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.notation-lightbox-close{min-width:44px;min-height:44px;border:1px solid #b9c8be;border-radius:10px;background:#f8f7f3;color:#103c35;font-size:1.4rem;padding:3px 12px}
+.notation-lightbox-stage{position:relative;flex:1;min-height:0;overflow:hidden;touch-action:none;cursor:grab;user-select:none}
+.notation-lightbox-stage.is-dragging{cursor:grabbing}
+.notation-lightbox-image{position:absolute;left:50%;top:50%;max-width:none;width:auto;height:auto;transform-origin:center center;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.notation-lightbox-hint{text-align:center;font-size:.78rem;color:#e2e8e2;padding:8px 12px 12px;background:#103c35}
+body.notation-viewer-open{overflow:hidden}
+</style></head><body><div class="compact-header" id="compactHeader" aria-hidden="true"><div class="compact-header-inner"><span class="compact-header-mark" aria-hidden="true">♫</span><span class="compact-header-name">Bendir Kursu</span></div></div><header class="hero-header"><a class="hero-home-link" href="https://buyum.github.io/bendir-kursu/" target="_self" aria-label="Bendir Kursu ana sayfasına dön"><div class="hero-content"><span class="hero-kicker">TASAVVUF MÛSİKÎSİ · BENDİR EĞİTİMİ</span><h1>Bendir Kursu</h1><p>Usûlleri öğren, ritmi hisset.</p></div></a></header><main><nav class="main-tabs" aria-label="Ana menü"><button type="button" data-view="dersler" class="selected"><span class="nav-icon" aria-hidden="true">▤</span><span>Dersler</span></button><button type="button" data-view="notalar"><span class="nav-icon" aria-hidden="true">♫</span><span>Usûl Notaları</span></button><button type="button" data-view="videolar"><span class="nav-icon" aria-hidden="true">▷</span><span>Alıştırma Videoları</span></button><button type="button" data-view="temel"><span class="nav-icon" aria-hidden="true">✧</span><span>Temel Bilgiler</span></button></nav><div id="lessonControls" class="lesson-picker"><label for="lessonSelect">Ders Seçimi</label><select id="lessonSelect" aria-label="Ders seçimi"></select></div><section id="detail" class="card" hidden></section><section id="library" hidden></section></main><footer class="site-footer"><div class="footer-brand">Bendir Kursu</div><div class="build-meta" id="buildMeta" aria-label="Sürüm ve son güncelleme">Sürüm 1.25 · Son güncelleme tarihi yayınlandıktan sonra görüntülenir.</div><button type="button" id="refreshPage" class="refresh-link" aria-label="Sayfayı yeniden yükle">↻ Sayfayı yenile</button></footer><div class="notation-lightbox" id="notationLightbox" role="dialog" aria-modal="true" aria-label="Nota görseli" hidden><div class="notation-lightbox-toolbar"><span class="notation-lightbox-title" id="notationLightboxTitle"></span><button type="button" class="notation-lightbox-close" id="notationLightboxClose" aria-label="Kapat">×</button></div><div class="notation-lightbox-stage" id="notationLightboxStage"><img class="notation-lightbox-image" id="notationLightboxImage" alt=""></div><div class="notation-lightbox-hint">İki parmakla yakınlaştırın · Görseli sürükleyin · Kapatmak için ×</div></div><script>
 // Visible course version is maintained manually; GitHub supplies the commit date.
-const COURSE_VERSION = "1.25";
+const COURSE_VERSION = "1.26";
 // GitHub commit information is loaded only on the published site.
 // A local file preview deliberately displays "Önizleme" instead of an invented commit.
 async function loadBuildMeta(){
@@ -301,5 +314,91 @@ restoreRoute();
  window.addEventListener('resize',update,{passive:true});
  mobileQuery.addEventListener?.('change',update);
  update();
+})();
+
+// Notation lightbox: click to open, pinch/wheel/double-tap to zoom, drag to pan.
+(function initNotationLightbox(){
+ const viewer=document.getElementById('notationLightbox');
+ const stage=document.getElementById('notationLightboxStage');
+ const image=document.getElementById('notationLightboxImage');
+ const title=document.getElementById('notationLightboxTitle');
+ const closeButton=document.getElementById('notationLightboxClose');
+ const pointers=new Map();
+ let scale=1,x=0,y=0,baseWidth=1,baseHeight=1,lastDistance=0,lastMid=null,previousFocus=null;
+ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+ function constrain(){
+  const bounds=stage.getBoundingClientRect();
+  x=clamp(x,-Math.max(0,(baseWidth*scale-bounds.width)/2),Math.max(0,(baseWidth*scale-bounds.width)/2));
+  y=clamp(y,-Math.max(0,(baseHeight*scale-bounds.height)/2),Math.max(0,(baseHeight*scale-bounds.height)/2));
+ }
+ function paint(){constrain();image.style.transform=`translate(-50%, -50%) translate(${x}px, ${y}px) scale(${scale})`;}
+ function resetSize(){
+  const w=stage.clientWidth,h=stage.clientHeight;
+  if(!w||!h||!image.naturalWidth||!image.naturalHeight)return;
+  const ratio=Math.min(w/image.naturalWidth,h/image.naturalHeight,1);
+  baseWidth=image.naturalWidth*ratio;baseHeight=image.naturalHeight*ratio;
+  image.style.width=baseWidth+'px';image.style.height=baseHeight+'px';
+  scale=1;x=0;y=0;paint();
+ }
+ function open(src,alt,heading){
+  previousFocus=document.activeElement;
+  image.onload=resetSize;
+  image.src=src;image.alt=alt||heading||'Nota görseli';
+  title.textContent=heading||alt||'Nota görseli';
+  viewer.hidden=false;document.body.classList.add('notation-viewer-open');
+  pointers.clear();lastDistance=0;lastMid=null;
+  if(image.complete&&image.naturalWidth)resetSize();
+  closeButton.focus();
+ }
+ function close(){
+  viewer.hidden=true;document.body.classList.remove('notation-viewer-open');
+  pointers.clear();image.onload=null;image.removeAttribute('src');
+  if(previousFocus?.isConnected)previousFocus.focus();
+ }
+ function zoom(factor,cx=stage.clientWidth/2,cy=stage.clientHeight/2){
+  const next=clamp(scale*factor,1,6),f=next/scale;
+  x=(x-(cx-stage.clientWidth/2))*f+(cx-stage.clientWidth/2);
+  y=(y-(cy-stage.clientHeight/2))*f+(cy-stage.clientHeight/2);
+  scale=next;paint();
+ }
+ document.addEventListener('click',event=>{
+  const anchor=event.target.closest?.('.notation-panel a:has(img.notation)');
+  if(!anchor)return;
+  event.preventDefault();
+  const img=anchor.querySelector('img.notation');
+  open(anchor.href,img?.alt,anchor.closest('.notation-panel')?.querySelector('h3')?.textContent);
+ });
+ closeButton.addEventListener('click',close);
+ viewer.addEventListener('click',event=>{if(event.target===viewer)close();});
+ document.addEventListener('keydown',event=>{
+  if(viewer.hidden)return;
+  if(event.key==='Escape'){event.preventDefault();close();}
+  if(event.key==='Tab'){event.preventDefault();closeButton.focus();}
+ });
+ stage.addEventListener('wheel',event=>{event.preventDefault();const r=stage.getBoundingClientRect();zoom(Math.exp(-event.deltaY*.002),event.clientX-r.left,event.clientY-r.top);},{passive:false});
+ stage.addEventListener('dblclick',event=>{const r=stage.getBoundingClientRect();zoom(scale>1?1/scale:2.5,event.clientX-r.left,event.clientY-r.top);});
+ stage.addEventListener('pointerdown',event=>{
+  event.preventDefault();stage.setPointerCapture(event.pointerId);
+  pointers.set(event.pointerId,{x:event.clientX,y:event.clientY});
+  stage.classList.add('is-dragging');lastDistance=0;lastMid=null;
+ });
+ stage.addEventListener('pointermove',event=>{
+  if(!pointers.has(event.pointerId))return;
+  const old=pointers.get(event.pointerId);
+  pointers.set(event.pointerId,{x:event.clientX,y:event.clientY});
+  if(pointers.size===1){x+=event.clientX-old.x;y+=event.clientY-old.y;paint();}
+  else if(pointers.size===2){
+   const [a,b]=[...pointers.values()];
+   const distance=Math.hypot(a.x-b.x,a.y-b.y);
+   const mid={x:(a.x+b.x)/2,y:(a.y+b.y)/2};
+   if(lastMid){x+=mid.x-lastMid.x;y+=mid.y-lastMid.y;}
+   if(lastDistance){const r=stage.getBoundingClientRect();zoom(distance/lastDistance,mid.x-r.left,mid.y-r.top);}
+   else paint();
+   lastDistance=distance;lastMid=mid;
+  }
+ });
+ function release(event){pointers.delete(event.pointerId);lastDistance=0;lastMid=null;if(!pointers.size)stage.classList.remove('is-dragging');}
+ stage.addEventListener('pointerup',release);stage.addEventListener('pointercancel',release);
+ window.addEventListener('resize',()=>{if(!viewer.hidden)resetSize();});
 })();
 </script></body></html>
