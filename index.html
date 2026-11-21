@@ -122,9 +122,21 @@ main{padding-top:0}
 .notation-lightbox-hint{text-align:center;font-size:.78rem;color:#e2e8e2;padding:8px 12px 12px;background:#103c35}
 body.notation-viewer-open{overflow:hidden}
 
-</style></head><body><div class="compact-header" id="compactHeader" aria-hidden="true"><div class="compact-header-inner"><span class="compact-header-mark" aria-hidden="true">♫</span><span class="compact-header-name">Bendir Kursu</span></div></div><header class="hero-header"><a class="hero-home-link" href="https://buyum.github.io/bendir-kursu/" target="_self" aria-label="Bendir Kursu ana sayfasına dön"><div class="hero-content"><span class="hero-kicker">TASAVVUF MÛSİKÎSİ · BENDİR EĞİTİMİ</span><h1>Bendir Kursu</h1><p>Usûlleri öğren, ritmi hisset.</p></div></a></header><main><nav class="main-tabs" aria-label="Ana menü"><button type="button" data-view="dersler" class="selected"><span class="nav-icon" aria-hidden="true">▤</span><span>Dersler</span></button><button type="button" data-view="notalar"><span class="nav-icon" aria-hidden="true">♫</span><span>Usûl Notaları</span></button><button type="button" data-view="videolar"><span class="nav-icon" aria-hidden="true">▷</span><span>Alıştırma Videoları</span></button><button type="button" data-view="temel"><span class="nav-icon" aria-hidden="true">✧</span><span>Temel Bilgiler</span></button></nav><div id="lessonControls" class="lesson-picker"><label for="lessonSelect">Ders Seçimi</label><select id="lessonSelect" aria-label="Ders seçimi"></select></div><section id="detail" class="card" hidden></section><section id="library" hidden></section></main><footer class="site-footer"><div class="footer-brand">Bendir Kursu</div><div class="build-meta" id="buildMeta" aria-label="Sürüm ve son güncelleme">Sürüm 1.27 · Son güncelleme tarihi yayınlandıktan sonra görüntülenir.</div><button type="button" id="refreshPage" class="refresh-link" aria-label="Sayfayı yeniden yükle">↻ Sayfayı yenile</button></footer><div class="notation-lightbox" id="notationLightbox" role="dialog" aria-modal="true" aria-label="Nota görseli" hidden><div class="notation-lightbox-toolbar"><span class="notation-lightbox-title" id="notationLightboxTitle"></span><button type="button" class="notation-lightbox-close" id="notationLightboxClose" aria-label="Kapat">×</button></div><div class="notation-lightbox-stage" id="notationLightboxStage"><img class="notation-lightbox-image" id="notationLightboxImage" alt=""></div><div class="notation-lightbox-hint">İki parmakla yakınlaştırın · Görseli sürükleyin · Kapatmak için ×</div></div><script>
+
+/* 1.28: Dedicated welcome page and guided beginner navigation. */
+.home-intro{background:#f0f5ef;border:1px solid #d7e4d8;border-radius:17px;padding:22px 18px;margin:14px 0 24px}
+.home-kicker{font-size:.75rem;font-weight:750;letter-spacing:.07em;color:#53765e;margin:0 0 8px}
+.home-intro h2{font-size:1.65rem;color:#213e31;margin:0 0 10px}
+.home-intro>p:not(.home-kicker){line-height:1.6;color:#45594c;margin:0 0 17px}
+.home-step{background:white;border:1px solid #e0e8df;border-radius:12px;padding:14px;margin:10px 0}
+.home-step h3{font-size:1rem;color:#284d39;margin:0 0 6px}
+.home-step p{font-size:.92rem;color:#526459;line-height:1.5;margin:0}
+.home-start{display:block;width:100%;margin-top:18px;background:#285b45;border-color:#285b45;color:white;font-weight:700;text-align:center}
+.home-start:hover,.home-start:focus-visible{background:#1d4835}
+.basics-next{margin-top:20px}.basics-next button{width:100%;background:#fff;text-align:center;line-height:1.4}
+</style></head><body><div class="compact-header" id="compactHeader" aria-hidden="true"><div class="compact-header-inner"><span class="compact-header-mark" aria-hidden="true">♫</span><span class="compact-header-name">Bendir Kursu</span></div></div><header class="hero-header"><a class="hero-home-link" href="https://buyum.github.io/bendir-kursu/" target="_self" aria-label="Bendir Kursu ana sayfasına dön"><div class="hero-content"><span class="hero-kicker">TASAVVUF MÛSİKÎSİ · BENDİR EĞİTİMİ</span><h1>Bendir Kursu</h1><p>Usûlleri öğren, ritmi hisset.</p></div></a></header><main><nav class="main-tabs" aria-label="Ana menü"><button type="button" data-view="dersler" class="selected"><span class="nav-icon" aria-hidden="true">▤</span><span>Dersler</span></button><button type="button" data-view="notalar"><span class="nav-icon" aria-hidden="true">♫</span><span>Usûl Notaları</span></button><button type="button" data-view="videolar"><span class="nav-icon" aria-hidden="true">▷</span><span>Alıştırma Videoları</span></button><button type="button" data-view="temel"><span class="nav-icon" aria-hidden="true">✧</span><span>Temel Bilgiler</span></button></nav><div id="lessonControls" class="lesson-picker"><label for="lessonSelect">Ders Seçimi</label><select id="lessonSelect" aria-label="Ders seçimi"></select></div><section id="home" hidden></section><section id="detail" class="card" hidden></section><section id="library" hidden></section></main><footer class="site-footer"><div class="footer-brand">Bendir Kursu</div><div class="build-meta" id="buildMeta" aria-label="Sürüm ve son güncelleme">Sürüm 1.28 · Son güncelleme tarihi yayınlandıktan sonra görüntülenir.</div><button type="button" id="refreshPage" class="refresh-link" aria-label="Sayfayı yeniden yükle">↻ Sayfayı yenile</button></footer><div class="notation-lightbox" id="notationLightbox" role="dialog" aria-modal="true" aria-label="Nota görseli" hidden><div class="notation-lightbox-toolbar"><span class="notation-lightbox-title" id="notationLightboxTitle"></span><button type="button" class="notation-lightbox-close" id="notationLightboxClose" aria-label="Kapat">×</button></div><div class="notation-lightbox-stage" id="notationLightboxStage"><img class="notation-lightbox-image" id="notationLightboxImage" alt=""></div><div class="notation-lightbox-hint">İki parmakla yakınlaştırın · Görseli sürükleyin · Kapatmak için ×</div></div><script>
 // Visible course version is maintained manually; GitHub supplies the commit date.
-const COURSE_VERSION = "1.27";
+const COURSE_VERSION = "1.28";
 // GitHub commit information is loaded only on the published site.
 // A local file preview deliberately displays "Önizleme" instead of an invented commit.
 async function loadBuildMeta(){
@@ -162,7 +174,7 @@ const lessons=[
  {id:'l3',order:3,topic:'Sofya’n Usûlü',date:null,title:'4/4 Sofya’n Usûlü',videos:[{title:'Ana Kalıp ve Velvelesi - Saf Pratik',url:'https://www.youtube.com/shorts/XjtrsKE0Lc8'},{title:'Ana Kalip - Velvele Musiki Pratik',url:'https://www.youtube.com/shorts/9-bhRI9K0vY'}],images:[{title:'Nota Görseli – Ana Usûl',src:'images/4te4_sofyan-usulu-ana-unul-nota.jpeg',alt:'Sofya’n Usûlü – Ana Usûl'},{title:'Nota Görseli – Velvele',src:'images/4te4_sofyan-usulu-nota-velvele.jpeg',alt:'Sofya’n Usûlü – Velvele'}],notes:"Sofyan Usûlü, dört zamanlı bir usûldür. İlk Düm vuruşu iki zaman sürer.\n\nTemel vuruşları:\nAna Usûl: Düm (2 zaman) – Te – Te\nVelvele: Düm – Te – Ke – Tek – Kâ\n\nÖnce ana usûlde Düm vuruşunun iki zamanlık süresini koruyun. Ardından velveledeki kısa vuruşları ekleyin. Dört zamanlık ölçünün düzenini bozmamaya dikkat edin."},
  {id:'l4',order:4,topic:'Yürük Semâî Usûlü',date:null,title:'6/8 Yürük Semâî Usûlü',videos:[{title:'Ana Kalıp ve Velvelesi - Saf Pratik',url:'https://www.youtube.com/shorts/ayCr-NDxYBI'},{title:'Ana Kalip - Musiki Pratik',url:'https://www.youtube.com/shorts/0qMgYIk7arg'},{title:'Velvele - Musiki Pratiky',url:'https://www.youtube.com/shorts/1jee4ruspzM'}],images:[{title:'Nota Görseli – Ana Usûl ve Velvele',src:'images/6te8_yuruk-semai-usulu-nota.jpeg',alt:'Yürük Semâî Usûlü – Ana Usûl ve Velvele'}],notes:"Yürük Semâî Usûlü, altı zamanlı bir usûldür. Genellikle iki üçlü grup hâlinde hissedilir.\n\nTemel vuruşları:\nAna Usûl: Düm – Tek – Tek – Düm – Te-ek\nVelvele: Düm – Tek – Kâ – Dü – Me – Tek – Kâ\n\nÖnce ana usûlü yavaşça çalışın. Ardından velveledeki kısa vuruşları ekleyin. Vuruş sürelerine dikkat ederek altı zamanlı ritmik akışı koruyun."}
 ];
-let activeView="temel",suppressRoute=true;
+let activeView="home",suppressRoute=true;
 let current=null;const $=s=>document.querySelector(s);const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const ordered=[...lessons].sort((a,b)=>a.order-b.order);
 function formatTitle(title){const t=String(title||'');return escapeHtml(t).replace(/2\/4/g,'<span class="fraction" aria-label="iki bölü dört">2⁄4</span>').replace(/3\/4/g,'<span class="fraction" aria-label="üç bölü dört">3⁄4</span>').replace(/4\/4/g,'<span class="fraction" aria-label="dört bölü dört">4⁄4</span>').replace(/6\/8/g,'<span class="fraction" aria-label="altı bölü sekiz">6⁄8</span>')}
 function render(){
@@ -238,12 +250,18 @@ async function copyCurrentLink(){
   $('#shareFeedback').textContent='Bağlantı kopyalandı.';
  }catch{$('#shareFeedback').textContent='Bağlantı kopyalanamadı: '+link;}
 }
+function showHome(){
+ const home=$('#home');
+ home.innerHTML=`<div class="home-intro"><p class="home-kicker">BENDİR ÖĞRENMEYE BAŞLAYIN</p><h2>Bendire ilk adım</h2><p>Bendir çalmaya yeni başlıyorsanız önce temel vuruşları öğrenin. Ardından ilk usûl dersine geçin.</p><div class="home-step"><h3>Temel Bilgiler</h3><p>Bendir seslerini ve vuruş yerlerini tanıyın.</p></div><div class="home-step"><h3>1. Ders: ${formatTitle(ordered[0].title)}</h3><p>İlk usûlünüzü öğrenin ve alıştırmalarla pekiştirin.</p></div><button type="button" class="home-start" id="homeStart">Öğrenmeye başla →</button></div>`;
+ home.querySelector('#homeStart').addEventListener('click',()=>setView('temel'));
+}
+function goToFirstLesson(){current=ordered[0].id;setView('dersler');}
 function setView(view,scrollToPicker=false){
  activeView=view;
  document.querySelectorAll('[data-view]').forEach(b=>{const selected=b.dataset.view===view;b.classList.toggle('selected',selected);b.setAttribute('aria-current',selected?'page':'false')});
- const isLessons=view==='dersler';$('#lessonControls').hidden=!isLessons;$('#detail').hidden=!isLessons;$('#library').hidden=isLessons;
+ const isLessons=view==='dersler';const isHome=view==='home';$('#home').hidden=!isHome;$('#lessonControls').hidden=!isLessons;$('#detail').hidden=!isLessons;$('#library').hidden=isLessons||isHome;if(isHome){showHome();syncRoute();window.scrollTo({top:0,behavior:'smooth'});return;}
  if(isLessons){if(current==='basics')showBasics(!scrollToPicker);else show(current||ordered[0].id,!scrollToPicker);if(scrollToPicker)requestAnimationFrame(()=>$('#lessonControls').scrollIntoView({behavior:'smooth',block:'start'}));return}
- if(view==='temel'){$('#library').innerHTML=`<div class="library-card"><h2 class="library-title">Temel Bilgiler</h2><h3>Bendir Sesleri ve Vuruş Yerleri</h3><a href="images/bendir-ses.png" target="_blank" rel="noopener noreferrer"><img src="images/bendir-ses.png" class="basics-image" alt="Bendir üzerinde temel vuruş yerleri" loading="lazy"></a><p class="meta">Görseli tam boyutta açmak için üzerine dokunun.</p>${basicsExercisesMarkup()}</div>`}
+ if(view==='temel'){$('#library').innerHTML=`<div class="library-card"><h2 class="library-title">Temel Bilgiler</h2><h3>Bendir Sesleri ve Vuruş Yerleri</h3><a href="images/bendir-ses.png" target="_blank" rel="noopener noreferrer"><img src="images/bendir-ses.png" class="basics-image" alt="Bendir üzerinde temel vuruş yerleri" loading="lazy"></a><p class="meta">Görseli tam boyutta açmak için üzerine dokunun.</p>${basicsExercisesMarkup()}<div class="basics-next actions"><button type="button" id="basicsToFirst">${ordered[0].order}. Ders: ${formatTitle(ordered[0].title)} →</button></div></div>`;$('#basicsToFirst').addEventListener('click',goToFirstLesson)}
  else if(view==='notalar'){$('#library').innerHTML=`<h2 class="library-title">Usûl Notaları</h2><p class="library-intro">Usûllerin nota görselleri</p>`+ordered.map(l=>`<article class="library-card"><h3>${l.order}. Ders: ${formatTitle(l.title)}</h3>${(l.images||[]).map(notationMarkup).join('')||'<p>[Nota görseli eklenecek]</p>'}</article>`).join('')}
  else if(view==='videolar'){$('#library').innerHTML=`<h2 class="library-title">Alıştırma Videoları</h2><p class="library-intro">Usûllere göre alıştırmalar</p><article class="library-card"><h3>Temel Bilgiler</h3>${videoMarkup(basicsExercise,0)}</article>`+ordered.map(l=>`<article class="library-card"><h3>${l.order}. Ders: ${formatTitle(l.title)}</h3>${(l.videos||[]).map(videoMarkup).join('')||'<p>[Video bağlantısı eklenecek]</p>'}</article>`).join('')}
  if(!isLessons){placeShareIcon();syncRoute();}
@@ -253,7 +271,7 @@ function setView(view,scrollToPicker=false){
 const PUBLIC_SITE='https://buyum.github.io/bendir-kursu/';
 function routeParams(){
  if(activeView==='dersler')return current==='basics'?{seite:'grundlagen'}:{ders:String(ordered.find(l=>l.id===current)?.order||1)};
- return {seite:({temel:'grundlagen',notalar:'notalar',videolar:'videolar'})[activeView]||'grundlagen'};
+ return activeView==='home'?{}:{seite:({temel:'grundlagen',notalar:'notalar',videolar:'videolar'})[activeView]||'grundlagen'};
 }
 function shareUrl(){
  const url=new URL(location.protocol==='file:'?PUBLIC_SITE:location.href);
@@ -278,7 +296,7 @@ function restoreRoute(){
  }else if(page==='notalar')setView('notalar');
  else if(page==='videolar')setView('videolar');
  else if(page==='grundlagen')setView('temel');
- else setView('temel');
+ else setView('home');
  suppressRoute=false;
 }
 render();
