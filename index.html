@@ -121,9 +121,23 @@ main{padding-top:0}
 .notation-lightbox-image{position:absolute;left:50%;top:50%;max-width:none;width:auto;height:auto;transform-origin:center center;pointer-events:none;user-select:none;-webkit-user-drag:none}
 .notation-lightbox-hint{text-align:center;font-size:.78rem;color:#e2e8e2;padding:8px 12px 12px;background:#103c35}
 body.notation-viewer-open{overflow:hidden}
+
+/* 1.28: optional manual stroke exercise, first lesson only */
+.stroke-practice{margin-top:16px;padding:15px;background:#f4f8f4;border:1px solid #d5e3d8;border-radius:13px}
+.stroke-practice h4{margin:0 0 7px;font-size:1.05rem;color:#234b39}
+.stroke-practice p{margin:0 0 12px;color:#53685c;font-size:.9rem;line-height:1.5}
+.stroke-modes{display:flex;gap:8px;margin-bottom:13px}
+.stroke-modes button{flex:1;min-width:0;padding:9px 6px;min-height:44px;border-color:#a7bdae;background:#fff;color:#234b39;font-size:.9rem}
+.stroke-modes button[aria-pressed="true"]{background:#295640;color:#fff;border-color:#295640}
+.stroke-steps{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+.stroke-step{min-width:68px;padding:10px 12px;background:#fff;border-color:#bacdc0;color:#234b39;font-weight:700}
+.stroke-step[aria-pressed="true"]{background:#295640;color:#fff;border-color:#295640;box-shadow:0 0 0 2px #a3bda8}
+.stroke-status{min-height:24px;text-align:center;color:#385c48;font-size:.9rem;margin:8px 0}
+.stroke-actions{display:flex;justify-content:space-between;gap:8px}
+.stroke-actions button{flex:1;padding:9px 7px;min-width:0;font-size:.88rem}
 </style></head><body><div class="compact-header" id="compactHeader" aria-hidden="true"><div class="compact-header-inner"><span class="compact-header-mark" aria-hidden="true">♫</span><span class="compact-header-name">Bendir Kursu</span></div></div><header class="hero-header"><a class="hero-home-link" href="https://buyum.github.io/bendir-kursu/" target="_self" aria-label="Bendir Kursu ana sayfasına dön"><div class="hero-content"><span class="hero-kicker">TASAVVUF MÛSİKÎSİ · BENDİR EĞİTİMİ</span><h1>Bendir Kursu</h1><p>Usûlleri öğren, ritmi hisset.</p></div></a></header><main><nav class="main-tabs" aria-label="Ana menü"><button type="button" data-view="dersler" class="selected"><span class="nav-icon" aria-hidden="true">▤</span><span>Dersler</span></button><button type="button" data-view="notalar"><span class="nav-icon" aria-hidden="true">♫</span><span>Usûl Notaları</span></button><button type="button" data-view="videolar"><span class="nav-icon" aria-hidden="true">▷</span><span>Alıştırma Videoları</span></button><button type="button" data-view="temel"><span class="nav-icon" aria-hidden="true">✧</span><span>Temel Bilgiler</span></button></nav><div id="lessonControls" class="lesson-picker"><label for="lessonSelect">Ders Seçimi</label><select id="lessonSelect" aria-label="Ders seçimi"></select></div><section id="detail" class="card" hidden></section><section id="library" hidden></section></main><footer class="site-footer"><div class="footer-brand">Bendir Kursu</div><div class="build-meta" id="buildMeta" aria-label="Sürüm ve son güncelleme">Sürüm 1.27 · Son güncelleme tarihi yayınlandıktan sonra görüntülenir.</div><button type="button" id="refreshPage" class="refresh-link" aria-label="Sayfayı yeniden yükle">↻ Sayfayı yenile</button></footer><div class="notation-lightbox" id="notationLightbox" role="dialog" aria-modal="true" aria-label="Nota görseli" hidden><div class="notation-lightbox-toolbar"><span class="notation-lightbox-title" id="notationLightboxTitle"></span><button type="button" class="notation-lightbox-close" id="notationLightboxClose" aria-label="Kapat">×</button></div><div class="notation-lightbox-stage" id="notationLightboxStage"><img class="notation-lightbox-image" id="notationLightboxImage" alt=""></div><div class="notation-lightbox-hint">İki parmakla yakınlaştırın · Görseli sürükleyin · Kapatmak için ×</div></div><script>
 // Visible course version is maintained manually; GitHub supplies the commit date.
-const COURSE_VERSION = "1.27";
+const COURSE_VERSION = "1.28";
 // GitHub commit information is loaded only on the published site.
 // A local file preview deliberately displays "Önizleme" instead of an invented commit.
 async function loadBuildMeta(){
@@ -183,13 +197,49 @@ function showBasics(scroll=true){
  syncPicker();
  if(scroll)$('#detail').scrollIntoView({behavior:'smooth',block:'start'});
 }
+function strokePracticeMarkup(){
+ return `<div class="stroke-practice" id="strokePractice" aria-label="Vuruş alıştırması">
+  <h4>Vuruş Alıştırması</h4>
+  <p>Vuruşları sırayla seçerek çalışın. Bu alıştırma ses çalmaz.</p>
+  <div class="stroke-modes" role="group" aria-label="Vuruş türü">
+   <button type="button" data-stroke-mode="ana" aria-pressed="true">Ana Usûl</button>
+   <button type="button" data-stroke-mode="vel" aria-pressed="false">Velvele</button>
+  </div>
+  <div class="stroke-steps" id="strokeSteps"></div>
+  <div class="stroke-status" id="strokeStatus" role="status" aria-live="polite">Bir vuruş seçin.</div>
+  <div class="stroke-actions"><button type="button" id="strokeReset">Sıfırla</button><button type="button" id="strokeNext">Sonraki vuruş →</button></div>
+ </div>`;
+}
+function initStrokePractice(){
+ const root=document.getElementById('strokePractice');if(!root)return;
+ const patterns={ana:['Düm','Tek'],vel:['Düm','Te','Ke']};
+ let mode='ana',selected=-1;
+ const steps=root.querySelector('#strokeSteps');
+ const status=root.querySelector('#strokeStatus');
+ function renderSteps(){
+  root.querySelectorAll('[data-stroke-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.strokeMode===mode)));
+  steps.replaceChildren();
+  patterns[mode].forEach((stroke,i)=>{
+   const b=document.createElement('button');b.type='button';b.className='stroke-step';
+   b.textContent=stroke;b.setAttribute('aria-label',(i+1)+'. vuruş: '+stroke);
+   b.setAttribute('aria-pressed',String(selected===i));
+   b.addEventListener('click',()=>{selected=i;renderSteps()});steps.appendChild(b);
+  });
+  status.textContent=selected<0?'Bir vuruş seçin.':(selected+1)+'. vuruş: '+patterns[mode][selected];
+  root.querySelector('#strokeNext').disabled=selected===patterns[mode].length-1;
+ }
+ root.querySelectorAll('[data-stroke-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.strokeMode;selected=-1;renderSteps()}));
+ root.querySelector('#strokeReset').addEventListener('click',()=>{selected=-1;renderSteps()});
+ root.querySelector('#strokeNext').addEventListener('click',()=>{selected=Math.min(selected+1,patterns[mode].length-1);renderSteps()});
+ renderSteps();
+}
 function show(id,scroll=true){
  current=id;if(activeView==='dersler')syncRoute();const l=ordered.find(x=>x.id===id);if(!l)return;syncPicker();const i=ordered.indexOf(l);
  const images=l.placeholder?`<section class="content-panel notation-panel"><h3>[Nota Görseli – Başlık]</h3><p class="meta">[Nota görseli eklenecek]</p></section>`:(l.images||[]).map(im=>`<section class="content-panel notation-panel"><h3>${escapeHtml(im.title)}</h3><a href="${escapeHtml(im.src)}" target="_blank" rel="noopener noreferrer" aria-label="Nota görselini tam boyutta aç"><img src="${escapeHtml(im.src)}" alt="${escapeHtml(im.alt)}" class="notation" loading="lazy"></a><p class="meta">Nota görselini tam boyutta açmak için üzerine dokunun.</p></section>`).join('');
  const videos=l.placeholder?'<section class="video-section"><h4>1. Alıştırma: [Alıştırma başlığı]</h4><p class="meta">[Video bağlantısı eklenecek]</p></section>':(l.videos||[]).map((v,n)=>{const src=embed(v.url);return `<section class="video-section"><h4>${n+1}. Alıştırma: ${escapeHtml(v.title)}</h4>${src?`<div class="video-wrap"><iframe class="player" src="${src}" title="${escapeHtml(v.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`:`<p>Video burada oynatılamıyor. <a href="${escapeHtml(v.url)}" target="_blank" rel="noopener noreferrer">YouTube’da izle</a></p>`}</section>`}).join('');
  $('#detail').hidden=false;
- $('#detail').innerHTML=`<div class="lesson-hero"><h2 class="lesson-title"><span class="lesson-prefix">${l.order}. Ders:</span> ${formatTitle(l.title)}</h2></div>${images}<section class="content-panel videos-panel"><h3>Alıştırmalar</h3>${videos}</section><section class="content-panel notes-panel"><h3>Ders Notları</h3><p class="notes notes-placeholder">${escapeHtml(l.notes)}</p></section><div class="actions"><button id="prev">← ${i===0?'Temel Bilgiler':`${ordered[i-1].order}. Ders: ${formatTitle(ordered[i-1].title)}`}</button>${i<ordered.length-1?`<button id="next">${ordered[i+1].order}. Ders: ${formatTitle(ordered[i+1].title)} →</button>`:''}</div>`;
- placeShareIcon();$('#prev').onclick=()=>i===0?showBasics():show(ordered[i-1].id);if(i<ordered.length-1)$('#next').onclick=()=>show(ordered[i+1].id);if(scroll)$('#detail').scrollIntoView({behavior:'smooth',block:'start'});
+ $('#detail').innerHTML=`<div class="lesson-hero"><h2 class="lesson-title"><span class="lesson-prefix">${l.order}. Ders:</span> ${formatTitle(l.title)}</h2></div>${images}<section class="content-panel videos-panel"><h3>Alıştırmalar</h3>${videos}</section><section class="content-panel notes-panel"><h3>Ders Notları</h3><p class="notes notes-placeholder">${escapeHtml(l.notes)}</p>${l.id==='l1'?strokePracticeMarkup():''}</section><div class="actions"><button id="prev">← ${i===0?'Temel Bilgiler':`${ordered[i-1].order}. Ders: ${formatTitle(ordered[i-1].title)}`}</button>${i<ordered.length-1?`<button id="next">${ordered[i+1].order}. Ders: ${formatTitle(ordered[i+1].title)} →</button>`:''}</div>`;
+ placeShareIcon();initStrokePractice();$('#prev').onclick=()=>i===0?showBasics():show(ordered[i-1].id);if(i<ordered.length-1)$('#next').onclick=()=>show(ordered[i+1].id);if(scroll)$('#detail').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function notationMarkup(im){return `<section class="content-panel notation-panel"><h3>${escapeHtml(im.title)}</h3><a href="${escapeHtml(im.src)}" target="_blank" rel="noopener noreferrer" aria-label="Nota görselini tam boyutta aç"><img src="${escapeHtml(im.src)}" alt="${escapeHtml(im.alt)}" class="notation" loading="lazy"></a><p class="meta">Nota görselini tam boyutta açmak için üzerine dokunun.</p></section>`}
 function videoMarkup(v,n){const src=embed(v.url);return `<section class="video-section"><h4>${n+1}. Alıştırma: ${escapeHtml(v.title)}</h4>${src?`<div class="video-wrap"><iframe class="player" src="${src}" title="${escapeHtml(v.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`:`<p><a href="${escapeHtml(v.url)}" target="_blank" rel="noopener noreferrer">YouTube’da izle</a></p>`}</section>`}
