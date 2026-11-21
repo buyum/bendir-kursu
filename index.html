@@ -443,4 +443,36 @@ restoreRoute();
  stage.addEventListener('pointerup',release);stage.addEventListener('pointercancel',release);
  window.addEventListener('resize',()=>{if(!viewer.hidden)resetSize();});
 })();
+ /* Desktop: Headerbild ohne starken Zoom, mit weichen Übergängen */
+@media (min-width: 601px) {
+  .hero-header {
+    background-image: none !important;
+    background-color: #073d38 !important;
+  }
+
+  .hero-header::after {
+    content: "" !important;
+    display: block !important;
+    background-image: url('images/bendir-header.webp');
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center center;
+
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 22%,
+      black 78%,
+      transparent 100%
+    );
+
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 22%,
+      black 78%,
+      transparent 100%
+    );
+  }
+}
 </script></body></html>
